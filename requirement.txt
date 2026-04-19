@@ -1,0 +1,27 @@
+# Core AI Frameworks
+tensorflow==2.15.0  # Or 2.18+ for H100 native support
+tensorflow-datasets==4.9.4
+keras-hub==0.17.0  # You mentioned using this for ViT
+
+# Image & Pathology Handling
+openslide-bin==4.0.0.6
+openslide-python==1.4.1
+opencv-python==4.11.0.86
+pillow==11.1.0
+
+# Monitoring & Hardware (Crucial for H100)
+GPUtil==1.4.0
+nvitop==1.4.2
+psutil==6.1.1
+
+# Data & UI
+pandas==2.2.3
+scikit-learn==1.6.1
+streamlit==1.42.0
+tqdm==4.67.1
+h5py==3.12.1
+
+# Transformers & HF
+transformers==4.48.3
+datasets==3.2.0
+huggingface_hub  # Add this for your upload/download scripts
