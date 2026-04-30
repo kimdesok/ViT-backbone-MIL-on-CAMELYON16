@@ -27,19 +27,24 @@
 To extend the ViT-MIL framework validated on TCGA-BRCA [previously](https://github.com/kimdesok/ViT-backbone-MIL-on-TCGA/blob/main/README.md), we conducted a preliminary EDA on the **Camelyon16** dataset to prepare it for the training experiments.  
 Unlike TCGA-BRCA, Camelyon16 provides **pixel-level tumor annotations**, enabling strongly supervised sampling and comparison against the weakly supervised ViT-MIL baseline(data not shown).  
 
-<img width="536" height="280" alt="image" src="https://github.com/user-attachments/assets/ed9323a6-0ccd-4d3b-aeab-72b6d4bb5f80" /><br>
-**Figure 1**. Tumor mask visualization of a Camelyon16 whole slide image(WSI), representing sentinel lymph node tissue obtained during breast cancer surgery.<br>  Unlike TCGA datasets, Camelyon16 provides pixel-level annotations, enabling patch- or region-level ground truth and allowing more granular positive-patch sampling for MIL.
+<img width="536" height="280" alt="image" src="https://github.com/kimdesok/ViT-backbone-MIL-on-CAMELYON16/blob/main/images/Fig1.png"/><br>
+**Figure 1**. Tumor mask visualization of a Camelyon16 whole slide image(WSI), representing sentinel lymph node tissue obtained during breast cancer surgery.<br>  
 
-<img width="321" height="412" alt="image" src="https://github.com/user-attachments/assets/56aad0e5-f049-463e-9659-c9814fbfba50" /><br>
+Unlike TCGA datasets, Camelyon16 provides pixel-level annotations, enabling patch- or region-level ground truth and allowing more granular positive-patch sampling for MIL.
+
+<img width="321" height="412" alt="image" src="https://github.com/kimdesok/ViT-backbone-MIL-on-CAMELYON16/blob/main/images/Fig2.png" /><br>
 **Figure 2**. Patches representing tissue, tumor, and background were visualized in green, orange, and red, respectively, from the same slide as Fig. 1.<br>
+
 Slides were filtered to remove glass regions, retaining only tissue patches. Positive patches were sampled from tumor areas, while negatives were taken exclusively from negative slides. This approach reduced the original WSI data volume by roughly 10 : 1 after conversion to TFRecord.
 
-<img width="546" height="470" alt="image" src="https://github.com/user-attachments/assets/f0dd4956-558f-4520-9522-0c14202d6757" /><br>
+<img width="546" height="470" alt="image" src="https://github.com/kimdesok/ViT-backbone-MIL-on-CAMELYON16/blob/main/images/Fig3.png" /><br>
 **Figure 3**. Representative WSIs highlighting the localization challenge of metastatic cancer detection. <br> 
+
 Panel A shows a large metastatic area (1,077 positive patches); Panel B shows micrometastatic tissue (2 positive patches ≈ 0.1% of all tissue), illustrating the inherent difficulty of WSI-level classification and the need for MIL-based learning. <br>
 
-<img width="423" height="253" alt="image" src="https://github.com/user-attachments/assets/17943aac-a451-459d-af56-bfbad25cd12f" /><br>
+<img width="423" height="253" alt="image" src="https://github.com/kimdesok/ViT-backbone-MIL-on-CAMELYON16/blob/main/images/Fig4.png" /><br>
 **Figure 4**. Patch-level visualization of metastatic vs. normal tissue patches (tumor areas highlighted in red).<br>
+
 Even to non-experts, visual cues are distinctive, though the severe class imbalance (tumor ≪ normal) complicates conventional classification.
 To address this, segmentation-based approaches (e.g., U-Net, Mask RCNN) have achieved AUC > 97% [1][2], but require dense pixel-level labels.
 
